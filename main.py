@@ -7,7 +7,7 @@ import csv
 # Function to send WhatsApp message
 def send_whatsapp_message(phone_number, message):
     pywhatkit.sendwhatmsg_instantly(phone_number, message, 5)
-    time.sleep(5)
+    time.sleep(2)
 
     pyautogui.click()
 
@@ -15,7 +15,7 @@ def send_whatsapp_message(phone_number, message):
     pyautogui.press("enter")
 
     # Wait for a few seconds to ensure that the WhatsApp window is open
-    time.sleep(5)
+    time.sleep(2)
 
 
 # Function to close WhatsApp tab
@@ -42,7 +42,8 @@ with open(csv_file_path, mode="r") as file:
         phone_number = "+20" + row[2]
         user_name = row[3]
         user_password = row[4]
-        custom_message = f"مرحبًا بك {user_name} في مدرسة الشمامسة\nكلمة المرور: {user_password}\nثم إنشاء كلمة مرور جديدة\nنبدأ الحصص الجمعة 27 أكتوبر ٢٠٢٣\n{rest_of_the_message}"
+        user_code = row[1]
+        custom_message = f"مرحبًا بك {user_name} في مدرسة الشمامسة\nرمز المستخدم: {user_code}\nكلمة المرور: {user_password}\nثم إنشاء كلمة مرور جديدة\nنبدأ الحصص الجمعة 27 أكتوبر ٢٠٢٣\n{rest_of_the_message}"
 
         print(f"Sending message to {user_name} at {phone_number}:")
         print(custom_message)
